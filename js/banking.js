@@ -1,7 +1,23 @@
-document.getElementById('deposit-btn').addEventListener('click', () => {
+/* function doubleIt(num){
+    const result = num * 2;
+    return result;
+}
+
+const fast = doubleIt(3);
+console.log(fast); */
+
+function getInputValue(){
     const depositInput = document.getElementById('deposit-input');
     const depositInputText = depositInput.value;
     const depositInputAmount = parseFloat(depositInputText);
+     // set the input field empty
+     depositInput.value = '';
+    return depositInputAmount;
+}
+
+// 
+document.getElementById('deposit-btn').addEventListener('click', () => {
+    const depositInputAmount = getInputValue();
 
     // set value to deposit card
     const depositTotal = document.getElementById('deposit-total');
@@ -17,8 +33,7 @@ document.getElementById('deposit-btn').addEventListener('click', () => {
     const totalBalance = perviousBalanceTotal + depositInputAmount;
     totalBalanceField.innerText = totalBalance;
 
-    // set the input field empty
-    depositInput.value = '';
+   
 });
 
 
