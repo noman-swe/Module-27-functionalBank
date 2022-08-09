@@ -15,17 +15,21 @@ function getInputValue(inputID){
     return InputAmount;
 }
 
+function updateTotalField(inputID, inputAmount){
+    const totalAmount = document.getElementById(inputID);
+    const totalAmountText = totalAmount.innerText;
+    const previousTotalAmount = parseFloat(totalAmountText);
+
+    const calculationPreviousAmount = previousTotalAmount + inputAmount;
+    totalAmount.innerText = calculationPreviousAmount;
+}
+
 // 
 document.getElementById('deposit-btn').addEventListener('click', () => {
     const depositInputAmount = getInputValue('deposit-input');
 
     // set value to deposit card
-    const depositTotal = document.getElementById('deposit-total');
-    const depositTotalText = depositTotal.innerText;
-    const prviousDepositTotalAmount = parseFloat(depositTotalText);
-
-    const prviousTotalDepositAmount = prviousDepositTotalAmount + depositInputAmount;
-    depositTotal.innerText = prviousTotalDepositAmount;
+    updateTotalField('deposit-total', depositInputAmount);
 
     // deposit add to balance
     const totalBalanceField = document.getElementById('balance-total');
@@ -43,11 +47,13 @@ document.getElementById('withdraw-btn').addEventListener('click', () => {
     const withdrawInput = getInputValue('withdraw-input');
 
     // set value to deposit card
-    const withdrawTotal = document.getElementById('withdraw-total');
+ /*    const withdrawTotal = document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
     const prviousWithdrawTotalAmount = parseFloat(withdrawTotalText);
     const prviousTotalWithdrawAmount = prviousWithdrawTotalAmount + withdrawInput;
     withdrawTotal.innerText = prviousTotalWithdrawAmount;
+ */
+    updateTotalField( 'withdraw-total', withdrawInput);
 
     // deposit add to balance
     const totalBalanceField = document.getElementById('balance-total');
