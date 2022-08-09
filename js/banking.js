@@ -6,23 +6,24 @@
 const fast = doubleIt(3);
 console.log(fast); */
 
-function getInputValue(){
-    const depositInput = document.getElementById('deposit-input');
-    const depositInputText = depositInput.value;
-    const depositInputAmount = parseFloat(depositInputText);
+function getInputValue(inputID){
+    const inputField = document.getElementById(inputID);
+    const InputFieldText = inputField.value;
+    const InputAmount = parseFloat(InputFieldText);
      // set the input field empty
-     depositInput.value = '';
-    return depositInputAmount;
+     inputField.value = '';
+    return InputAmount;
 }
 
 // 
 document.getElementById('deposit-btn').addEventListener('click', () => {
-    const depositInputAmount = getInputValue();
+    const depositInputAmount = getInputValue('deposit-input');
 
     // set value to deposit card
     const depositTotal = document.getElementById('deposit-total');
     const depositTotalText = depositTotal.innerText;
     const prviousDepositTotalAmount = parseFloat(depositTotalText);
+
     const prviousTotalDepositAmount = prviousDepositTotalAmount + depositInputAmount;
     depositTotal.innerText = prviousTotalDepositAmount;
 
@@ -39,24 +40,21 @@ document.getElementById('deposit-btn').addEventListener('click', () => {
 
 // withdraw
 document.getElementById('withdraw-btn').addEventListener('click', () => {
-    const withdrawInput = document.getElementById('withdraw-input');
-    const dwithdrawInputText = withdrawInput.value;
-    const withdrawInputAmount = parseFloat(dwithdrawInputText);
+    const withdrawInput = getInputValue('withdraw-input');
 
     // set value to deposit card
     const withdrawTotal = document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
     const prviousWithdrawTotalAmount = parseFloat(withdrawTotalText);
-    const prviousTotalWithdrawAmount = prviousWithdrawTotalAmount + withdrawInputAmount;
+    const prviousTotalWithdrawAmount = prviousWithdrawTotalAmount + withdrawInput;
     withdrawTotal.innerText = prviousTotalWithdrawAmount;
 
     // deposit add to balance
     const totalBalanceField = document.getElementById('balance-total');
     const totalBalanceText = totalBalanceField.innerText;
     const perviousBalanceTotal = parseFloat(totalBalanceText);
-    const totalBalance = perviousBalanceTotal - withdrawInputAmount;
+    const totalBalance = perviousBalanceTotal - withdrawInput;
     totalBalanceField.innerText = totalBalance;
 
-    // set the input field empty
-    withdrawInput.value = '';
+
 });
