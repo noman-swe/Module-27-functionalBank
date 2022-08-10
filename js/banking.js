@@ -26,6 +26,7 @@ function getCurrentBalance(){
 function updateBalance(inputAmount, isAdd){
     const totalBalanceField = document.getElementById('balance-total');
     const balanceAmount = getCurrentBalance();
+    
     if(isAdd == true){
         const totalBalance = balanceAmount + inputAmount;
         totalBalanceField.innerText = totalBalance;
